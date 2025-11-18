@@ -1,4 +1,4 @@
-<?php phpinfo(); ?>
+
 <!DOCTYPE html>
 <html lang="uk">
   <head>
@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <?php phpinfo(); ?>
     <header>
       <div class="logo-block">
         <img src="images/logo_tntu.png" alt="ТНТУ" />
         <img src="images/logo_fis.png" alt="ФІС" />
-        <img src="images/logo_kn.png" alt="СІс" />
+        <img src="images/logo_kn.png" alt="КІ" />
       </div>
-      <h1>Персональний сайт студентки</h1>
+      <h1>Персональний сайт студента</h1>
       <h1>Мирон Яна СІс-31</h1>
       <nav>
         <ul>
@@ -35,27 +36,28 @@
 
       <section class="intro">
         <article>
-          <h3>Про головну сторінку</h3>
-          <p>Тут знаходяться такі блоки: про мене, моя група, моє хобі</p>
+          <h3>Про мене</h3>
+          <p>Короткий опис...</p>
+          <a href="biography.html" class="button">Детальніше</a>
         </article>
       </section>
 
       <section class="blocks">
         <article>
           <h3>Про мене</h3>
-          <p>Знаходиться інформація про мене</p>
+          <p>Короткий опис...</p>
           <a href="biography.html" class="button">Детальніше</a>
         </article>
 
         <article>
           <h3>Моя група</h3>
-          <p>Коротко про мою групу</p>
+          <p>Короткий опис...</p>
           <a href="group.html" class="button">Детальніше</a>
         </article>
 
         <article>
           <h3>Моє хобі</h3>
-          <p>Коротко про мої хлбі</p>
+          <p>Короткий опис...</p>
           <a href="hobby.html" class="button">Детальніше</a>
         </article>
       </section>
