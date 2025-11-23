@@ -1,4 +1,3 @@
-<?php phpinfo(); ?>
 <!DOCTYPE html>
 <html lang="uk">
   <head>
@@ -6,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Мій персональний сайт</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
-  <body>
+  <body
+    oncontextmenu="showCustomMenu(true,event.clientX,event.clientY); return false;"
+    onclick="showCustomMenu(false,event.clientX,event.clientY);"
+  >
     <header>
       <div class="logo-block">
         <img src="images/logo_tntu.png" alt="ТНТУ" />
         <img src="images/logo_fis.png" alt="ФІС" />
         <img src="images/logo_kn.png" alt="СІс" />
       </div>
+
       <h1>Персональний сайт студентки</h1>
       <h1>Мирон Яна СІс-31</h1>
+
       <nav>
         <ul>
           <li><a href="index.html">Головна</a></li>
@@ -28,105 +33,72 @@
     </header>
 
     <main>
+      <!-- Вступ -->
       <section class="intro">
         <h2>Ласкаво просимо!</h2>
         <p>Це головна сторінка мого персонального сайту.</p>
       </section>
 
+      <!-- Приклад 1 -->
       <section class="intro">
-        <article>
-          <h3>Про головну сторінку</h3>
-          <p>Тут знаходяться такі блоки: про мене, моя група, моє хобі</p>
-        </article>
+        <h3>Приклад 1: Зміна зображення при наведенні</h3>
+        <img
+          src="images/photo1.jpg"
+          alt="Фото до наведення"
+          class="example-image"
+          onmouseover="this.src='images/photo2.jpg'"
+          onmouseout="this.src='images/photo1.jpg'"
+        />
+        <p class="example-text">
+          Наведіть курсор на зображення — воно зміниться.
+        </p>
       </section>
 
+      <!-- Приклад 2 -->
+      <section class="intro">
+        <h3>Приклад 2: Поле, яке приймає лише цифри</h3>
+        <label for="onlyDigits">Введіть число: </label>
+        <input
+          id="onlyDigits"
+          type="text"
+          placeholder="Вводьте тільки цифри"
+          onkeypress="return checkSymbol(event.keyCode || event.which)"
+          inputmode="numeric"
+          pattern="[0-9]*"
+        />
+        <p class="example-text">Спробуй ввести літери — вони не з'являться.</p>
+      </section>
+
+      <!-- Блоки контенту -->
       <section class="blocks">
         <article>
           <h3>Про мене</h3>
-          <p>Знаходиться інформація про мене</p>
+          <p>Короткий опис...</p>
           <a href="biography.html" class="button">Детальніше</a>
         </article>
 
         <article>
           <h3>Моя група</h3>
-          <p>Коротко про мою групу</p>
+          <p>Короткий опис...</p>
           <a href="group.html" class="button">Детальніше</a>
         </article>
 
         <article>
           <h3>Моє хобі</h3>
-          <p>Коротко про мої хлбі</p>
+          <p>Короткий опис...</p>
           <a href="hobby.html" class="button">Детальніше</a>
         </article>
       </section>
-
-      <iframe
-        src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=50.45&lon=30.52&zoom=5"
-        width="300"
-        height="200"
-        frameborder="0"
-      >
-      </iframe>
-
-      <script
-        type="text/javascript"
-        src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-        async
-      >
-        {
-          "symbols": [
-            {"proName":"FOREXCOM:EURUSD","title":"EUR/USD"},
-            {"proName":"FOREXCOM:GBPUSD","title":"GBP/USD"},
-            {"proName":"FOREXCOM:USDJPY","title":"USD/JPY"}
-          ],
-          "showSymbolLogo": true,
-          "colorTheme": "light",
-          "isTransparent": false,
-          "displayMode": "adaptive",
-          "locale": "en"
-        }
-      </script>
-
-      <div id="news"></div>
-      <script>
-        fetch(
-          "https://newsapi.org/v2/top-headlines?country=us&apiKey=ВАШ_API_KEY"
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            let html = "<ul>";
-            data.articles.forEach((article) => {
-              html += `<li><a href="${article.url}" target="_blank">${article.title}</a></li>`;
-            });
-            html += "</ul>";
-            document.getElementById("news").innerHTML = html;
-          });
-      </script>
-
-      <div id="fb-root"></div>
-      <script
-        async
-        defer
-        crossorigin="anonymous"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0"
-      ></script>
-      <div
-        class="fb-like"
-        data-href="https://www.facebook.com/facebook"
-        data-width=""
-        data-layout="standard"
-        data-action="like"
-        data-size="small"
-        data-share="true"
-      ></div>
-      <iframe
-        width="300"
-        height="150"
-        frameborder="0"
-        src="https://aqicn.org/widget/map/?city=Kyiv&size=medium"
-      >
-      </iframe>
     </main>
+
+    <!-- Приклад 3: Користувацьке меню -->
+    <div id="custommenu">
+      <div onclick="doAction('copy')">Скопіювати вміст документа</div>
+      <div onclick="doAction('close')">Закрити вікно</div>
+      <div onclick="doAction('fontIncrease')">Збільшити шрифт</div>
+      <div onclick="doAction('fontDecrease')">Зменшити шрифт</div>
+      <div onclick="doAction('changeBkg')">Змінити фон</div>
+    </div>
 
     <footer>
       <p>&copy; 2025 Мирон Яна | ТНТУ ім. І. Пулюя</p>
